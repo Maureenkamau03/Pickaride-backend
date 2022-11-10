@@ -5,5 +5,8 @@ class ApplicationController < Sinatra::Base
     car = Car.all
     car.to_json
   end
-  get '/cars' do
+  get '/cars/:car_description' do
+    car = Car.find_by(params[:car_description])
+    car.to_json
+  end
 end
