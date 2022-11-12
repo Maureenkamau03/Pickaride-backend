@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
     get '/users' do
-        # get all the employees from the database
+        # get all the users from the database
         users = User.all.order(:created_at)
-        # employees = Employee.where.not(first: [nil, "Untitled"])
-        # Employee.where(first: [values]).delete_all
-        # Employee.where.not(first: 'Untiltled').where.not(first: 'nil')
-        # employees.where.not(first: nil)
+        # users = User.where.not(first: [nil, "Untitled"])
+        # User.where(first: [values]).delete_all
+        # User.where.not(first: 'Untiltled').where.not(first: 'nil')
+        # users.where.not(first: nil)
         # send them back as a JSON array
         users.to_json
       end
-      
+
     post '/users' do
         users = User.create(first: params[:first],  
           last: params[:last], 
@@ -19,7 +19,11 @@ class UsersController < ApplicationController
           password: params[:password])
         users.to_json
       end
-    
+     
+      get "/users/:username" do
+        user = User.find_by_username(params[:username])
+        user.to_json(include: [:trips])
+      end
   
   
   end
