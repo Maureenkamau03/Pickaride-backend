@@ -24,6 +24,7 @@ class UsersController < ApplicationController
         user = User.find_by_username(params[:username])
         user.to_json(include: [:trips])
       end
+      
   
   
   end
