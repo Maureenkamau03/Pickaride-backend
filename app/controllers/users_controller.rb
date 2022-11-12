@@ -24,7 +24,15 @@ class UsersController < ApplicationController
         user = User.find_by_username(params[:username])
         user.to_json(include: [:trips])
       end
-      
+      get "/users/:username" do
+        user = User.find_by_username(params[:username])
+          if user
+            user.to_json(include: [:trips])
+          else
+            status 401
+            { errors: "user doesn't exist" }.to_json
+          end
+      end
   
   
   end
