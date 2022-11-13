@@ -2,6 +2,19 @@ require "sinatra"
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  # before do
+  #   content_type :json
+  #   response.headers["Access-Control-Allow-Origin"] ="*"
+  # end
+  before do
+    content_type :json
+    headers 'Access-Control-Allow-Origin' => '*'
+  end
+
+  options "*" do
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, UPDATE, DELETE"
+  end
+
   get '/cars' do
     car = Car.all
     car.to_json
@@ -10,20 +23,18 @@ class ApplicationController < Sinatra::Base
     car = Car.find_by(params[:car_description])
     car.to_json
   end
-  get 'cars/:id' do
+  get '/cars/:id' do
     car = Car.find(params[:id])
+    car.to_json
   end
-  post 'rentals/' do
-    rentals = Rental.create(car_description: params[:first], 
+  patch '/cars/:id' do
+
+  end
+  post '/rentals' do
+    rentals = Rental.create(car_description: params[:car_description], 
       registration_no: params[:registration_no],
-      pickup_date: params[:'pick_up'])
+      name: params[:'name'], licence: params[:'licence'],phone_no: params[:'phone_no'])
+    rentals.to_json
     end
 end
 
-# employees = Employee.create(first: params[:first],  
-#   last: params[:last], 
-#   email: params[:email], 
-#   work_station: params[:work_station],
-#   phone: params[:phone],
-#   hobby: params[:hobby])
-# employees.to_json

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_165756) do
+ActiveRecord::Schema.define(version: 2022_11_13_155133) do
 
   create_table "cars", force: :cascade do |t|
     t.string "car_description"
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 2022_11_09_165756) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.integer "car_id"
+    t.string "name"
+    t.string "phone_no"
     t.string "car_description"
     t.string "registration_no"
-    t.date "pickup_date"
-    t.date "return_date"
+    t.string "licence"
   end
 
 end
