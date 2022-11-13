@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  post '/users/login' do 
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+       session[:user_id] = @user.id
+       redirect "/users/#{@user.id}"
+    else
+       flash[:error] = "No account associated with those credentials please try      again."
+       redirect '/users/login'
+    end
+    end
+  
   get '/users/:id' do
     user = User.find_by_id(params[:id])
     user.to_json
