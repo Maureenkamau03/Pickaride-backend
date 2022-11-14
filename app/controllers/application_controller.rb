@@ -31,12 +31,17 @@ class ApplicationController < Sinatra::Base
   patch '/cars/:id' do
 
   end
+  
   post '/rentals' do
     rentals = Rental.create(car_description: params[:car_description], 
       registration_no: params[:registration_no],
       name: params[:'name'], licence: params[:'licence'],phone_no: params[:'phone_no'])
     rentals.to_json
     end
+  get '/rentals' do
+    rentals = Rental.all
+    rentals.to_json
+  end
 end
 
 
@@ -64,4 +69,4 @@ end
     user.to_json
   end
   
-end
+
