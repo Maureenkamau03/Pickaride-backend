@@ -17,5 +17,5 @@ configure :production do
   )
 end
 # Require in all files in 'app' directory
-require_all "app
+require_all "app"
 
