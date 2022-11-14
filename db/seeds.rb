@@ -79,4 +79,7 @@ Car.create ([
     is_hired: false
    },
 
+
 ])
+user1 = User.create(name: "greg", email: "Switch@gmail.com", location: "mitini", licence: "G0060", password: "gggu9bje",)
+user1 = User.create(name: "gizo", email: "Swit3ch@gmail.com", location: "mombasa", licence: "G00660", password: "gggu9bje")

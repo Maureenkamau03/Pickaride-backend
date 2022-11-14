@@ -30,4 +30,14 @@ ActiveRecord::Schema.define(version: 2022_11_13_155133) do
     t.string "licence"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "password"
+    t.string "licence"
+    t.string "location"
+    t.string "username"
+  end
+
 end
