@@ -23,6 +23,8 @@ GEM
     database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
     eventmachine (1.2.7)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -33,12 +35,10 @@ GEM
     minitest (5.16.3)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.8)
+    pg (1.4.4)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (6.0.0)
-      nio4r (~> 2.0)
     rack (2.2.4)
     rack-contrib (2.3.0)
       rack (~> 2.0)
@@ -78,7 +78,6 @@ GEM
     sinatra-activerecord (2.0.26)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
-    sqlite3 (1.5.3-x86_64-linux)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -94,8 +93,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 6.1)
   database_cleaner (~> 2.0)
+  faker (~> 2.18)
+  pg
   pry (~> 0.14.1)
-  puma
   rack-contrib (~> 2.3)
   rack-cors (~> 1.1)
   rack-test (~> 1.1)
@@ -106,8 +106,10 @@ DEPENDENCIES
   rspec-json_expectations (~> 2.2)
   sinatra (~> 2.1)
   sinatra-activerecord (~> 2.0)
-  sqlite3 (~> 1.4)
   thin (~> 1.8)
+
+RUBY VERSION
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.19
